@@ -1,0 +1,34 @@
+:root {
+	/* Wandefruit Internal Theme - Clean, Functional, Hint of Brand */
+	--sl-color-accent-low: #fff2e6;
+	--sl-color-accent: #ff7e33;
+	--sl-color-accent-high: #cc5200;
+}
+
+[data-theme='light'] {
+	--sl-color-accent-low: #fffcf9;
+	--sl-color-accent: #ff5500;
+	--sl-color-accent-high: #b33b00;
+}
+
+/* Wiki Improvements */
+
+.sl-container {
+	max-width: 1400px !important;
+	/* Allow wider tables */
+}
+
+h1 {
+	font-weight: 700;
+	letter-spacing: -0.02em;
+}
+
+.card-grid {
+	margin-bottom: 2rem;
+}
+
+/* Make tables look sharp */
+table {
+	width: 100%;
+	margin: 1rem 0;
+}

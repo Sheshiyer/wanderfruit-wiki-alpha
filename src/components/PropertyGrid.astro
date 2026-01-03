@@ -1,0 +1,104 @@
+---
+import properties from "../data/properties.json";
+---
+
+<div class="property-grid">
+    {
+        properties.map((prop) => (
+            <a
+                href={`https://wanderfruit.com${prop.link}`}
+                target="_blank"
+                class="property-card"
+                style="text-decoration: none; color: inherit; display: block;"
+            >
+                <div class="property-image-container">
+                    {prop.image ? (
+                        <img
+                            src={prop.image}
+                            alt={prop.title}
+                            class="property-image"
+                            loading="lazy"
+                        />
+                    ) : (
+                        <div class="placeholder-image">No Image</div>
+                    )}
+                </div>
+                <div class="property-content">
+                    <h3 class="property-title">{prop.title}</h3>
+                    <p class="property-location">{prop.location}</p>
+                    <div class="property-stats">
+                        {prop.guests && <span>👥 {prop.guests} Guests</span>}
+                        {prop.bedrooms && <span>🛏️ {prop.bedrooms} BR</span>}
+                        {prop.bathrooms && <span>🚿 {prop.bathrooms} BA</span>}
+                    </div>
+                </div>
+            </a>
+        ))
+    }
+</div>
+
+<style>
+    .property-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .property-card {
+        border: 1px solid var(--sl-color-gray-5);
+        border-radius: 0.5rem;
+        overflow: hidden;
+        transition:
+            transform 0.2s,
+            box-shadow 0.2s;
+        background: var(--sl-color-gray-6);
+    }
+
+    .property-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        border-color: var(--sl-color-accent);
+    }
+
+    .property-image {
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+    }
+
+    .property-content {
+        padding: 1rem;
+    }
+
+    .property-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: var(--sl-color-white);
+        line-height: 1.3;
+    }
+
+    .property-location {
+        font-size: 0.9rem;
+        color: var(--sl-color-gray-3);
+        margin-bottom: 0.8rem;
+    }
+
+    .property-stats {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.85rem;
+        color: var(--sl-color-gray-2);
+    }
+
+    .placeholder-image {
+        width: 100%;
+        aspect-ratio: 16/9;
+        background: var(--sl-color-gray-4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--sl-color-gray-2);
+    }
+</style>

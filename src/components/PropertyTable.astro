@@ -1,0 +1,117 @@
+---
+import properties from "../data/properties.json";
+---
+
+<div class="table-container">
+    <table class="wiki-table">
+        <thead>
+            <tr>
+                <th>Property</th>
+                <th>Location</th>
+                <th>Stats</th>
+                <th>Links</th>
+            </tr>
+        </thead>
+        <tbody>
+            {
+                properties.map((prop) => (
+                    <tr>
+                        <td>
+                            <div class="prop-cell">
+                                {prop.image && (
+                                    <img
+                                        src={prop.image}
+                                        alt=""
+                                        class="mini-thumb"
+                                        loading="lazy"
+                                    />
+                                )}
+                                <span class="prop-name">{prop.title}</span>
+                            </div>
+                        </td>
+                        <td>{prop.location}</td>
+                        <td class="stats-cell">
+                            <span title="Guests">👥 {prop.guests || "-"}</span>
+                            <span title="Bedrooms">
+                                🛏️ {prop.bedrooms || "-"}
+                            </span>
+                            <span title="Bathrooms">
+                                🚿 {prop.bathrooms || "-"}
+                            </span>
+                        </td>
+                        <td>
+                            <a
+                                href={`https://wanderfruit.com${prop.link}`}
+                                target="_blank"
+                                class="action-link"
+                            >
+                                View Listing
+                            </a>
+                        </td>
+                    </tr>
+                ))
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .table-container {
+        overflow-x: auto;
+        margin: 2rem 0;
+        border: 1px solid var(--sl-color-gray-5);
+        border-radius: 4px;
+    }
+
+    .wiki-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+    }
+
+    .wiki-table th,
+    .wiki-table td {
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid var(--sl-color-gray-5);
+        text-align: left;
+    }
+
+    .wiki-table th {
+        background-color: var(--sl-color-gray-6);
+        font-weight: 600;
+        color: var(--sl-color-white);
+    }
+
+    .prop-cell {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .mini-thumb {
+        width: 40px;
+        height: 40px;
+        border-radius: 4px;
+        object-fit: cover;
+    }
+
+    .prop-name {
+        font-weight: 500;
+    }
+
+    .stats-cell {
+        display: flex;
+        gap: 0.8rem;
+        white-space: nowrap;
+    }
+
+    .action-link {
+        color: var(--sl-color-accent);
+        text-decoration: none;
+        font-size: 0.85rem;
+    }
+
+    .action-link:hover {
+        text-decoration: underline;
+    }
+</style>

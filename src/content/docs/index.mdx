@@ -1,0 +1,44 @@
+---
+title: WanderFruit Internal
+description: Internal documentation and property explorer.
+---
+
+import { Card, CardGrid, LinkButton } from '@astrojs/starlight/components';
+import PropertyTable from '../../components/PropertyTable.astro';
+import ReviewTable from '../../components/ReviewTable.astro';
+
+Welcome to the **WanderFruit Internal Knowledge Base**. This documentation serves as the central hub for brand strategy, marketing assets, and property management data.
+
+## Quick Actions
+
+<CardGrid>
+	<Card title="Brand Strategy" icon="star">
+		Access voice, tone, and messaging guidelines.
+        <br/>
+		<a href="/brand/voice-and-tone/">View Guidelines &rarr;</a>
+	</Card>
+	<Card title="Marketing Assets" icon="document">
+		Retrieve improved copy, ad creatives, and campaign details.
+        <br/>
+		<a href="/marketing/ad-campaigns/">View Assets &rarr;</a>
+	</Card>
+    <Card title="Operations" icon="setting">
+		Check standard operating procedures and property data.
+        <br/>
+		<a href="/properties/">Manage Properties &rarr;</a>
+	</Card>
+</CardGrid>
+
+---
+
+## Property Directory
+
+Latest registered properties in the network.
+
+<PropertyTable />
+
+---
+
+## Recent Feedback Log
+
+<ReviewTable />

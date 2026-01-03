@@ -1,0 +1,108 @@
+---
+import reviews from "../data/reviews.json";
+---
+
+<div class="table-container">
+    <table class="wiki-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Reviewer</th>
+                <th>Feedback Log</th>
+                <th>Source</th>
+            </tr>
+        </thead>
+        <tbody>
+            {
+                reviews.map((review) => (
+                    <tr>
+                        <td class="whitespace-nowrap">{review.date}</td>
+                        <td>
+                            <div class="reviewer-cell">
+                                <img
+                                    src={review.image}
+                                    alt=""
+                                    class="avatar-mini"
+                                    loading="lazy"
+                                />
+                                <span>{review.name}</span>
+                            </div>
+                        </td>
+                        <td class="review-text">"{review.text}"</td>
+                        <td>
+                            <a
+                                href={review.sourceUrl}
+                                target="_blank"
+                                class="source-tag"
+                            >
+                                {review.source}
+                            </a>
+                        </td>
+                    </tr>
+                ))
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .table-container {
+        overflow-x: auto;
+        margin: 2rem 0;
+        border: 1px solid var(--sl-color-gray-5);
+        border-radius: 4px;
+    }
+
+    .wiki-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+    }
+
+    .wiki-table th,
+    .wiki-table td {
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid var(--sl-color-gray-5);
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .wiki-table th {
+        background-color: var(--sl-color-gray-6);
+        color: var(--sl-color-white);
+    }
+
+    .reviewer-cell {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 500;
+    }
+
+    .avatar-mini {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+    }
+
+    .review-text {
+        max-width: 500px;
+        color: var(--sl-color-gray-2);
+        font-style: italic;
+    }
+
+    .source-tag {
+        display: inline-block;
+        padding: 2px 6px;
+        background: var(--sl-color-gray-6);
+        border: 1px solid var(--sl-color-gray-5);
+        border-radius: 4px;
+        font-size: 0.75rem;
+        color: var(--sl-color-gray-2);
+        text-decoration: none;
+    }
+
+    .whitespace-nowrap {
+        white-space: nowrap;
+    }
+</style>
